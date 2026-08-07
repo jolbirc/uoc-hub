@@ -1,0 +1,13 @@
+- [ ] Miro board
+- [ ] Documentation 
+- [ ] Initial task list thought needed to complete the project (functional and non-functional)
+- [ ] Kanban board
+- [ ] Risk assessment
+- [ ] Lo-fi designs (figma)
+- [ ] Hifi design (figma)
+- [ ] Code
+- [ ] Set up DevOps/ReadMe
+- [ ] Screenshots of completed project
+- [ ] Recorded video of MVP
+- [ ] User guide?
+- [ ] OneDrive submission
