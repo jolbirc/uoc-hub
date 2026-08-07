@@ -1,5 +1,4 @@
 - [ ] Miro board
-- [ ] Documentation 
 - [ ] Initial task list thought needed to complete the project (functional and non-functional)
 - [ ] Kanban board
 - [ ] Risk assessment
@@ -9,5 +8,5 @@
 - [ ] Set up DevOps/ReadMe
 - [ ] Screenshots of completed project
 - [ ] Recorded video of MVP
-- [ ] User guide?
+- [ ] User guide? / Documentation on what could've went better
 - [ ] OneDrive submission
