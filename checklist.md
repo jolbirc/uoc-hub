@@ -1,6 +1,6 @@
 - [x] Miro board
 - [x] Initial task list thought needed to complete the project (functional and non-functional)
-- [ ] Kanban board
+- [x] Kanban board
 - [ ] Risk assessment
 - [ ] Lo-fi designs (figma)
 - [ ] Hifi design (figma)
