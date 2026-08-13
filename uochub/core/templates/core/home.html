@@ -1,0 +1,24 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<h1>Home</h1>
+<p>Welcome back, Student!</p>
+<div class="cards">
+    <a class="card" href="{% url 'study-spaces' %}">
+        <h2>Study Spaces</h2>
+        <p>Search or book a study room on campus</p>
+    </a>
+    <a class="card" href="{% url 'wellbeing' %}">
+        <h2>Wellbeing</h2>
+        <p>Resources and support.</p>
+    </a>
+    <a class="card" href="{% url 'directory' %}">
+        <h2>Campus Directory</h2>
+        <p>Find buildings, facilities, and student services.</p>
+    </a>
+    <a class="card" href="{% url 'calendar' %}">
+        <h2>Academic Calendar</h2>
+        <p>Key dates and your upcoming deadlines</p>
+    </a>
+</div>
+{% endblock %}

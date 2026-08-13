@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, "core/page.html", {"title": "Home"})
+    return render(request, "core/home.html", {"title": "Home"})
 
 
 def profile(request):

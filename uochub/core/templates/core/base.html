@@ -1,19 +1,17 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ title }} | UOCHub</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
 </head>
 <body>
-    <nav>
+    <nav class="sidebar">
         <a href="{% url 'home' %}">Home</a>
         <a href="{% url 'profile' %}">Profile</a>
         <a href="{% url 'campus-map' %}">Campus Map</a>
-        <a href="{% url 'study-spaces' %}">Study Spaces</a>
-        <a href="{% url 'wellbeing' %}">Wellbeing</a>
-        <a href="{% url 'directory' %}">Campus Directory</a>
-        <a href="{% url 'calendar' %}">Academic Calendar</a>
     </nav>
     <main>
         {% block content %}{% endblock %}
