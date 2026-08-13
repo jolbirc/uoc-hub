@@ -9,7 +9,7 @@ body {
 .sidebar {
     width: 200px;
     flex-shrink: 0;
-    border-right: 1px solid #000;
+    border-right: 1px solid #000000;
     padding: 1rem;
 }
 
