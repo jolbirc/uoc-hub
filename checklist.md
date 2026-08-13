@@ -3,8 +3,8 @@
 - [x] Kanban board
 - [x] Risk assessment
 - [x] Lo-fi designs (figma)
-- [ ] Hifi design (figma)
-- [ ] Code
+- [x] Hifi design (figma)
+- [x] Code
 - [ ] Set up DevOps/ReadMe
 - [ ] Screenshots of completed project
 - [ ] Recorded video of MVP
