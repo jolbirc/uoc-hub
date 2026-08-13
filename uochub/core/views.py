@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from .models import Building
+
 
 def home(request):
     return render(request, "core/home.html", {"title": "Home"})
@@ -30,10 +32,11 @@ def wellbeing(request):
 
 
 def directory(request):
+    buildings = Building.objects.all()
     return render(
         request,
-        "core/page.html",
-        {"title": "Campus Directory", "icon": "icons/campus-directory.svg", "show_back": True},
+        "core/directory.html",
+        {"title": "Campus Directory", "buildings": buildings},
     )
 
 

@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<a class="back-link" href="{% url 'home' %}">Back to Home</a>
+<h1 class="page-title">
+    <img class="page-icon" src="{% static 'icons/campus-directory.svg' %}" alt="">
+    Campus Directory
+</h1>
+{% if buildings %}
+<ul>
+    {% for building in buildings %}
+    <li>
+        <h2>{{ building.name }}</h2>
+        <p>{{ building.description }}</p>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No buildings in the directory yet.</p>
+{% endif %}
+{% endblock %}
