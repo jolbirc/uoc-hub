@@ -9,9 +9,10 @@
 </head>
 <body>
     <nav class="sidebar">
-        <a href="{% url 'home' %}">Home</a>
-        <a href="{% url 'profile' %}">Profile</a>
-        <a href="{% url 'campus-map' %}">Campus Map</a>
+        <img class="avatar" src="{% static 'icons/user-dummy-pfp.svg' %}" alt="Profile picture">
+        <a href="{% url 'home' %}"><img class="nav-icon" src="{% static 'icons/home.svg' %}" alt=""> Home</a>
+        <a href="{% url 'profile' %}"><img class="nav-icon" src="{% static 'icons/profile.svg' %}" alt=""> Profile</a>
+        <a href="{% url 'campus-map' %}"><img class="nav-icon" src="{% static 'icons/campus-map.svg' %}" alt=""> Campus Map</a>
     </nav>
     <main>
         {% block content %}{% endblock %}

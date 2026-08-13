@@ -1,5 +1,9 @@
 {% extends "core/base.html" %}
+{% load static %}
 
 {% block content %}
-<h1>{{ title }}</h1>
+<h1 class="page-title">
+    {% if icon %}<img class="page-icon" src="{% static icon %}" alt="">{% endif %}
+    {{ title }}
+</h1>
 {% endblock %}

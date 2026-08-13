@@ -1,22 +1,27 @@
 {% extends "core/base.html" %}
+{% load static %}
 
 {% block content %}
 <h1>Home</h1>
 <p>Welcome back, Student!</p>
 <div class="cards">
     <a class="card" href="{% url 'study-spaces' %}">
+        <img class="card-icon" src="{% static 'icons/study-spaces.svg' %}" alt="">
         <h2>Study Spaces</h2>
         <p>Search or book a study room on campus</p>
     </a>
     <a class="card" href="{% url 'wellbeing' %}">
+        <img class="card-icon" src="{% static 'icons/wellbeing-icon.svg' %}" alt="">
         <h2>Wellbeing</h2>
         <p>Resources and support.</p>
     </a>
     <a class="card" href="{% url 'directory' %}">
+        <img class="card-icon" src="{% static 'icons/campus-directory.svg' %}" alt="">
         <h2>Campus Directory</h2>
         <p>Find buildings, facilities, and student services.</p>
     </a>
     <a class="card" href="{% url 'calendar' %}">
+        <img class="card-icon" src="{% static 'icons/academic-calendar.svg' %}" alt="">
         <h2>Academic Calendar</h2>
         <p>Key dates and your upcoming deadlines</p>
     </a>
