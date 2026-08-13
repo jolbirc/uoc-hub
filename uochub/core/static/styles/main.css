@@ -64,3 +64,8 @@ main {
     width: 48px;
     height: 48px;
 }
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+}

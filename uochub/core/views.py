@@ -14,16 +14,32 @@ def campus_map(request):
 
 
 def study_spaces(request):
-    return render(request, "core/page.html", {"title": "Study Spaces", "icon": "icons/study-spaces.svg"})
+    return render(
+        request,
+        "core/page.html",
+        {"title": "Study Spaces", "icon": "icons/study-spaces.svg", "show_back": True},
+    )
 
 
 def wellbeing(request):
-    return render(request, "core/page.html", {"title": "Wellbeing", "icon": "icons/wellbeing-icon.svg"})
+    return render(
+        request,
+        "core/page.html",
+        {"title": "Wellbeing", "icon": "icons/wellbeing-icon.svg", "show_back": True},
+    )
 
 
 def directory(request):
-    return render(request, "core/page.html", {"title": "Campus Directory", "icon": "icons/campus-directory.svg"})
+    return render(
+        request,
+        "core/page.html",
+        {"title": "Campus Directory", "icon": "icons/campus-directory.svg", "show_back": True},
+    )
 
 
 def calendar(request):
-    return render(request, "core/page.html", {"title": "Academic Calendar", "icon": "icons/academic-calendar.svg"})
+    return render(
+        request,
+        "core/page.html",
+        {"title": "Academic Calendar", "icon": "icons/academic-calendar.svg", "show_back": True},
+    )

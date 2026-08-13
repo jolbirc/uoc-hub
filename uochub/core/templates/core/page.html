@@ -2,6 +2,9 @@
 {% load static %}
 
 {% block content %}
+{% if show_back %}
+<a class="back-link" href="{% url 'home' %}">Back to Home</a>
+{% endif %}
 <h1 class="page-title">
     {% if icon %}<img class="page-icon" src="{% static icon %}" alt="">{% endif %}
     {{ title }}
