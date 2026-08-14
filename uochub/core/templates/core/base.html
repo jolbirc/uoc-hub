@@ -10,12 +10,24 @@
 <body>
     <nav class="sidebar">
         <img class="avatar" src="{% static 'icons/user-dummy-pfp.svg' %}" alt="Profile picture">
-        <a href="{% url 'home' %}"><img class="nav-icon" src="{% static 'icons/home.svg' %}" alt=""> Home</a>
-        <a href="{% url 'profile' %}"><img class="nav-icon" src="{% static 'icons/profile.svg' %}" alt=""> Profile</a>
-        <a href="{% url 'campus-map' %}"><img class="nav-icon" src="{% static 'icons/campus-map.svg' %}" alt=""> Campus Map</a>
+        <a href="{% url 'home' %}" {% if request.resolver_match.url_name == 'home' %}class="active"{% endif %}>
+            <img class="nav-icon" src="{% static 'icons/home.svg' %}" alt=""> Home
+        </a>
+        <a href="{% url 'profile' %}" {% if request.resolver_match.url_name == 'profile' %}class="active"{% endif %}>
+            <img class="nav-icon" src="{% static 'icons/profile.svg' %}" alt=""> Profile
+        </a>
+        <a href="{% url 'campus-map' %}" {% if request.resolver_match.url_name == 'campus-map' %}class="active"{% endif %}>
+            <img class="nav-icon" src="{% static 'icons/campus-map.svg' %}" alt=""> Campus Map
+        </a>
     </nav>
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+    <div class="content">
+        <header class="topbar">
+            <span class="topbar-text">{% block header_text %}{% endblock %}</span>
+            <img class="logo" src="{% static 'img/logo.png' %}" alt="UOCHub">
+        </header>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </div>
 </body>
 </html>

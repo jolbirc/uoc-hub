@@ -1,9 +1,9 @@
 {% extends "core/base.html" %}
 {% load static %}
 
+{% block header_text %}Welcome back, Student!{% endblock %}
+
 {% block content %}
-<h1>Home</h1>
-<p>Welcome back, Student!</p>
 <div class="cards">
     <a class="card" href="{% url 'study-spaces' %}">
         <img class="card-icon" src="{% static 'icons/study-spaces.svg' %}" alt="">
