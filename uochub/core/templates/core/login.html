@@ -10,7 +10,11 @@
 <body>
     <main class="login-page">
         <img class="login-logo" src="{% static 'img/logo.png' %}" alt="UOCHub">
-        <form class="login-form">
+        <form class="login-form" method="post">
+            {% csrf_token %}
+            {% if form.errors %}
+            <p class="login-error">Incorrect username or password. Please try again.</p>
+            {% endif %}
             <label class="login-field">
                 <img class="login-field-icon" src="{% static 'icons/login-user.svg' %}" alt="">
                 <input type="text" name="username" placeholder="Username" autocomplete="username">

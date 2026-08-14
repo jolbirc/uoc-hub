@@ -16,6 +16,8 @@ body {
 .sidebar {
     width: 220px;
     flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
     padding: 1.5rem 1rem;
     background: var(--navy);
 }
@@ -33,6 +35,29 @@ body {
 
 .sidebar a.active,
 .sidebar a:hover {
+    background: var(--navy-light);
+}
+
+.logout-form {
+    margin-top: auto;
+}
+
+.logout-form button {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: none;
+    border-radius: 8px;
+    background: none;
+    color: var(--red);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.logout-form button:hover {
     background: var(--navy-light);
 }
 
@@ -210,6 +235,13 @@ h1, h2 {
 
 .login-button:hover {
     background: #2d6291;
+}
+
+.login-error {
+    /* counteract the form gap so this sits just above the username field */
+    margin-bottom: -3.5rem;
+    color: #ff9d9d;
+    font-weight: 600;
 }
 
 .admin-login-link {

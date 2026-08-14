@@ -19,6 +19,10 @@
         <a href="{% url 'campus-map' %}" {% if request.resolver_match.url_name == 'campus-map' %}class="active"{% endif %}>
             <img class="nav-icon" src="{% static 'icons/campus-map.svg' %}" alt=""> Campus Map
         </a>
+        <form class="logout-form" method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Log Out</button>
+        </form>
     </nav>
     <div class="content">
         <header class="topbar">
