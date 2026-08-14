@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.core.mail import send_mail
+from django.shortcuts import redirect, render
 
+from .forms import WellbeingContactForm
 from .models import Building
 
 
@@ -24,10 +26,40 @@ def study_spaces(request):
 
 
 def wellbeing(request):
+    if request.method == "POST":
+        form = WellbeingContactForm(request.POST)
+        if form.is_valid():
+            send_mail(
+                subject=f"Wellbeing message from {form.cleaned_data['name']}",
+                message=form.cleaned_data["message"],
+                from_email="noreply@uochub.example.com",
+                recipient_list=["wellbeing@uochub.example.com"],
+            )
+            return redirect("wellbeing-sent")
+    else:
+        form = WellbeingContactForm()
     return render(
         request,
-        "core/page.html",
-        {"title": "Wellbeing", "icon": "icons/wellbeing-icon.svg", "show_back": True},
+        "core/wellbeing.html",
+        {
+            "title": "Wellbeing",
+            "icon": "icons/wellbeing-icon.svg",
+            "show_back": True,
+            "form": form,
+        },
+    )
+
+
+def wellbeing_sent(request):
+    return render(
+        request,
+        "core/wellbeing.html",
+        {
+            "title": "Wellbeing",
+            "icon": "icons/wellbeing-icon.svg",
+            "show_back": True,
+            "sent": True,
+        },
     )
 
 

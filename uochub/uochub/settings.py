@@ -124,3 +124,6 @@ STATIC_URL = "static/"
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "login"
+
+# Dummy email backend: prints emails to the console instead of sending them.
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

@@ -17,6 +17,7 @@ urlpatterns = [
     path("map/", views.campus_map, name="campus-map"),
     path("study-spaces/", views.study_spaces, name="study-spaces"),
     path("wellbeing/", views.wellbeing, name="wellbeing"),
+    path("wellbeing/sent/", views.wellbeing_sent, name="wellbeing-sent"),
     path("directory/", views.directory, name="directory"),
     path("calendar/", views.calendar, name="calendar"),
 ]

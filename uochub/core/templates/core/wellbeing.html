@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<a class="back-link" href="{% url 'home' %}">Back to Home</a>
+<h1 class="page-title">
+    <img class="page-icon" src="{% static 'icons/wellbeing-icon.svg' %}" alt="">
+    Wellbeing
+</h1>
+{% if sent %}
+<p>Thanks, your message has been sent to the university wellbeing team.</p>
+<a href="{% url 'wellbeing' %}">Send another message</a>
+{% else %}
+<form method="post" class="wellbeing-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Send</button>
+</form>
+{% endif %}
+{% endblock %}
