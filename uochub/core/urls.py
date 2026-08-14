@@ -16,6 +16,7 @@ urlpatterns = [
     path("profile/", views.profile, name="profile"),
     path("map/", views.campus_map, name="campus-map"),
     path("study-spaces/", views.study_spaces, name="study-spaces"),
+    path("study-spaces/<slug:slug>/book/", views.book_space, name="book-space"),
     path("wellbeing/", views.wellbeing, name="wellbeing"),
     path("wellbeing/sent/", views.wellbeing_sent, name="wellbeing-sent"),
     path("directory/", views.directory, name="directory"),

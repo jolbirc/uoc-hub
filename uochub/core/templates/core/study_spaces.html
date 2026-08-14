@@ -7,6 +7,14 @@
     <img class="page-icon" src="{% static 'icons/study-spaces.svg' %}" alt="">
     Study Spaces
 </h1>
+<form method="get" class="space-search-form">
+    {{ search_form.as_p }}
+    <button type="submit">Search</button>
+    {% if searched %}<a href="{% url 'study-spaces' %}">Clear</a>{% endif %}
+</form>
+{% if searched %}
+<p>Showing spaces free at the selected time.</p>
+{% endif %}
 {% if spaces %}
 <ul>
     {% for space in spaces %}
@@ -14,10 +22,15 @@
         <h2>{{ space.name }}</h2>
         <p>{{ space.building.name }}</p>
         {% if space.description %}<p>{{ space.description }}</p>{% endif %}
+        <p>
+            Open {{ space.opening_time|time:"H:i" }}-{{ space.closing_time|time:"H:i" }}
+            - Currently {{ space.availability_now }}
+        </p>
+        <a href="{% url 'book-space' space.slug %}">Book this space</a>
     </li>
     {% endfor %}
 </ul>
 {% else %}
-<p>No study spaces available yet.</p>
+<p>{% if searched %}No spaces are free at that time.{% else %}No study spaces available yet.{% endif %}</p>
 {% endif %}
 {% endblock %}

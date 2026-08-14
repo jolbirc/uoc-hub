@@ -1,7 +1,9 @@
-from django.core.mail import send_mail
-from django.shortcuts import redirect, render
+import datetime
 
-from .forms import WellbeingContactForm
+from django.core.mail import send_mail
+from django.shortcuts import get_object_or_404, redirect, render
+
+from .forms import BookingForm, SpaceSearchForm, WellbeingContactForm
 from .models import Building, StudySpace
 
 
@@ -19,10 +21,48 @@ def campus_map(request):
 
 def study_spaces(request):
     spaces = StudySpace.objects.select_related("building").all()
+    search_form = SpaceSearchForm(request.GET or None)
+    searched = False
+    if search_form.is_valid():
+        searched = True
+        date = search_form.cleaned_data["date"]
+        hour = search_form.cleaned_data["hour"]
+        start = datetime.time(hour)
+        end = datetime.time(hour + 1) if hour < 23 else datetime.time.max
+        spaces = spaces.filter(
+            opening_time__lte=start, closing_time__gte=end
+        ).exclude(
+            bookings__date=date,
+            bookings__start_time__lt=end,
+            bookings__end_time__gt=start,
+        )
     return render(
         request,
         "core/study_spaces.html",
-        {"title": "Study Spaces", "spaces": spaces},
+        {
+            "title": "Study Spaces",
+            "spaces": spaces,
+            "search_form": search_form,
+            "searched": searched,
+        },
+    )
+
+
+def book_space(request, slug):
+    space = get_object_or_404(StudySpace, slug=slug)
+    if request.method == "POST":
+        form = BookingForm(request.POST, space=space)
+        if form.is_valid():
+            booking = form.save(commit=False)
+            booking.space = space
+            booking.save()
+            return redirect("study-spaces")
+    else:
+        form = BookingForm(space=space)
+    return render(
+        request,
+        "core/book_space.html",
+        {"title": f"Book {space.name}", "space": space, "form": form},
     )
 
 
