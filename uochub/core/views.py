@@ -2,7 +2,7 @@ from django.core.mail import send_mail
 from django.shortcuts import redirect, render
 
 from .forms import WellbeingContactForm
-from .models import Building
+from .models import Building, StudySpace
 
 
 def home(request):
@@ -18,10 +18,11 @@ def campus_map(request):
 
 
 def study_spaces(request):
+    spaces = StudySpace.objects.select_related("building").all()
     return render(
         request,
-        "core/page.html",
-        {"title": "Study Spaces", "icon": "icons/study-spaces.svg", "show_back": True},
+        "core/study_spaces.html",
+        {"title": "Study Spaces", "spaces": spaces},
     )
 
 

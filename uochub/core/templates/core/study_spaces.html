@@ -1,0 +1,23 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<a class="back-link" href="{% url 'home' %}">Back to Home</a>
+<h1 class="page-title">
+    <img class="page-icon" src="{% static 'icons/study-spaces.svg' %}" alt="">
+    Study Spaces
+</h1>
+{% if spaces %}
+<ul>
+    {% for space in spaces %}
+    <li>
+        <h2>{{ space.name }}</h2>
+        <p>{{ space.building.name }}</p>
+        {% if space.description %}<p>{{ space.description }}</p>{% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No study spaces available yet.</p>
+{% endif %}
+{% endblock %}
