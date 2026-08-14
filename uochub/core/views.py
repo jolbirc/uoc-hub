@@ -1,10 +1,14 @@
 import datetime
+from calendar import HTMLCalendar
 
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
+from django.utils.html import escape
+from django.utils.safestring import mark_safe
 
 from .forms import BookingForm, SpaceSearchForm, WellbeingContactForm
-from .models import Building, StudySpace
+from .models import Building, CalendarEvent, StudySpace
 
 
 def home(request):
@@ -113,9 +117,46 @@ def directory(request):
     )
 
 
+class EventCalendar(HTMLCalendar):
+    def __init__(self, events):
+        super().__init__()
+        self.events_by_day = {}
+        for event in events:
+            self.events_by_day.setdefault(event.date.day, []).append(event)
+
+    def formatday(self, day, weekday):
+        if day == 0 or day not in self.events_by_day:
+            return super().formatday(day, weekday)
+        items = "".join(
+            f"<li>{escape(e.title)}</li>" for e in self.events_by_day[day]
+        )
+        return (
+            f'<td class="{self.cssclasses[weekday]}">{day}<ul>{items}</ul></td>'
+        )
+
+
 def calendar(request):
+    today = timezone.localdate()
+    try:
+        first = datetime.date(
+            int(request.GET.get("year", today.year)),
+            int(request.GET.get("month", today.month)),
+            1,
+        )
+    except ValueError:
+        first = today.replace(day=1)
+
+    events = CalendarEvent.objects.filter(
+        date__year=first.year, date__month=first.month
+    )
+    month_html = EventCalendar(events).formatmonth(first.year, first.month)
     return render(
         request,
-        "core/page.html",
-        {"title": "Academic Calendar", "icon": "icons/academic-calendar.svg", "show_back": True},
+        "core/calendar.html",
+        {
+            "title": "Academic Calendar",
+            "calendar": mark_safe(month_html),
+            "prev_month": first - datetime.timedelta(days=1),
+            "next_month": (first + datetime.timedelta(days=31)).replace(day=1),
+        },
     )

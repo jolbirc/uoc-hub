@@ -36,6 +36,17 @@ class StudySpace(models.Model):
         return "in use" if booked else "free"
 
 
+class CalendarEvent(models.Model):
+    title = models.CharField(max_length=200)
+    date = models.DateField()
+
+    class Meta:
+        ordering = ["date"]
+
+    def __str__(self):
+        return f"{self.title} ({self.date})"
+
+
 class Booking(models.Model):
     space = models.ForeignKey(
         StudySpace, on_delete=models.CASCADE, related_name="bookings"

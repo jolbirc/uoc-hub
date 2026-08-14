@@ -1,0 +1,18 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<a class="back-link" href="{% url 'home' %}">Back to Home</a>
+<h1 class="page-title">
+    <img class="page-icon" src="{% static 'icons/academic-calendar.svg' %}" alt="">
+    Academic Calendar
+</h1>
+<p class="calendar-nav">
+    <a href="{% url 'calendar' %}?year={{ prev_month.year }}&month={{ prev_month.month }}">Previous</a>
+    <a href="{% url 'calendar' %}">Today</a>
+    <a href="{% url 'calendar' %}?year={{ next_month.year }}&month={{ next_month.month }}">Next</a>
+</p>
+<div class="calendar-wrap">
+    {{ calendar }}
+</div>
+{% endblock %}
