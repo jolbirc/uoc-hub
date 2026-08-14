@@ -211,3 +211,10 @@ h1, h2 {
 .login-button:hover {
     background: #2d6291;
 }
+
+.admin-login-link {
+    /* counteract the form gap so this sits just under the button */
+    margin-top: -3.5rem;
+    color: #ffffff;
+    font-size: 0.95rem;
+}
