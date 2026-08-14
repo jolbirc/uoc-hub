@@ -3,6 +3,10 @@ from django.shortcuts import render
 from .models import Building
 
 
+def login_page(request):
+    return render(request, "core/login.html")
+
+
 def home(request):
     return render(request, "core/home.html", {"title": "Home"})
 

@@ -1,0 +1,29 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log In | UOCHub</title>
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+</head>
+<body>
+    <main class="login-page">
+        <img class="login-logo" src="{% static 'img/logo.png' %}" alt="UOCHub">
+        <form class="login-form">
+            <label class="login-field">
+                <img class="login-field-icon" src="{% static 'icons/login-user.svg' %}" alt="">
+                <input type="text" name="username" placeholder="Username" autocomplete="username">
+            </label>
+            <label class="login-field">
+                <img class="login-field-icon" src="{% static 'icons/login-password.svg' %}" alt="">
+                <input type="password" name="password" placeholder="Password" autocomplete="current-password">
+            </label>
+            <label class="login-remember">
+                <input type="checkbox" name="remember" checked> Remember me?
+            </label>
+            <button class="login-button" type="submit">Login</button>
+        </form>
+    </main>
+</body>
+</html>
