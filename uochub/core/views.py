@@ -12,6 +12,7 @@ from .forms import BookingForm, ProfileForm, SpaceSearchForm, WellbeingContactFo
 from .models import Building, CalendarEvent, Profile, StudySpace
 
 
+@login_required
 def home(request):
     return render(request, "core/home.html", {"title": "Home"})
 
@@ -39,6 +40,7 @@ def profile(request):
     )
 
 
+@login_required
 def campus_map(request):
     buildings = [
         {
@@ -60,6 +62,7 @@ def campus_map(request):
     )
 
 
+@login_required
 def study_spaces(request):
     spaces = StudySpace.objects.select_related("building").all()
     search_form = SpaceSearchForm(request.GET or None)
@@ -89,6 +92,7 @@ def study_spaces(request):
     )
 
 
+@login_required
 def book_space(request, slug):
     space = get_object_or_404(StudySpace, slug=slug)
     if request.method == "POST":
@@ -145,6 +149,7 @@ def wellbeing_sent(request):
     )
 
 
+@login_required
 def directory(request):
     buildings = Building.objects.all()
     return render(
@@ -172,6 +177,7 @@ class EventCalendar(HTMLCalendar):
         )
 
 
+@login_required
 def calendar(request):
     today = timezone.localdate()
     try:

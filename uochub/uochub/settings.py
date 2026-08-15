@@ -20,12 +20,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Env-driven config: defaults are for local development; production sets
 # DJANGO_SECRET_KEY, DJANGO_DEBUG=0 and DJANGO_ALLOWED_HOSTS.
 
-SECRET_KEY = os.environ.get(
-    "DJANGO_SECRET_KEY",
-    "django-insecure-s6+#77xcd1y95t1lwy$2vt1)g(+@7(xso&s3d=3)(3xm5tko8-",
-)
-
 DEBUG = os.environ.get("DJANGO_DEBUG", "1") == "1"
+
+# The bundled key below is fine for local dev, but this repo is public, so it
+# must never be reachable in production. If DJANGO_SECRET_KEY isn't set
+# there, fail loudly at startup rather than silently running with a key
+# anyone can read on GitHub.
+if DEBUG:
+    SECRET_KEY = os.environ.get(
+        "DJANGO_SECRET_KEY",
+        "django-insecure-s6+#77xcd1y95t1lwy$2vt1)g(+@7(xso&s3d=3)(3xm5tko8-",
+    )
+else:
+    SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 ALLOWED_HOSTS = [
     h for h in os.environ.get("DJANGO_ALLOWED_HOSTS", "").split(",") if h
