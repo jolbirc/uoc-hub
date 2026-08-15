@@ -1,3 +1,5 @@
 Writing views - https://docs.djangoproject.com/en/6.0/topics/http/views/
 What is Python's `coerce()` ised for? - https://stackoverflow.com/questions/14486802/what-is-pythons-coerce-used-for
 Python Standard Library `calendar.HTMLCalendar - https://tedboy.github.io/python_stdlib/generated/generated/calendar.HTMLCalendar.html
+How to override default user model field in Django - https://stackoverflow.com/questions/2263533/how-to-override-default-user-model-field-in-django
+The basics of using leaflet.js with Open Street Maps - https://www.lavalamp.biz/blogs/the-basics-of-using-leaflet-js-with-open-street-maps/

@@ -4,7 +4,7 @@
 - [x] Risk assessment
 - [x] Lo-fi designs (figma)
 - [x] Hifi design (figma)
-- [ ] Code
+- [x] Code
 - [ ] Set up DevOps/ReadMe
 - [ ] Screenshots of completed project
 - [ ] Recorded video of MVP
