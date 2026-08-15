@@ -34,7 +34,7 @@ ALLOWED_HOSTS = [
 CSRF_TRUSTED_ORIGINS = [f"https://{h}" for h in ALLOWED_HOSTS]
 
 if not DEBUG:
-    # TLS is terminated by the reverse proxy (Caddy), which forwards
+    # TLS is terminated by the reverse proxy (nginx), which forwards
     # X-Forwarded-Proto so Django knows the original request was https.
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     SECURE_SSL_REDIRECT = True

@@ -1,17 +1,21 @@
-# systemd unit for the UOCHub gunicorn server.
+# systemd unit for UOCHub (gunicorn behind nginx).
 # Install: sudo cp deploy/uochub.service /etc/systemd/system/
-#          sudo systemctl enable --now uochub
+#          sudo systemctl daemon-reload && sudo systemctl enable --now uochub
 
 [Unit]
-Description=UOCHub gunicorn
+Description=UOCHub (gunicorn)
 After=network.target
 
 [Service]
-User=uochub
-Group=uochub
-WorkingDirectory=/srv/uochub/uochub
-EnvironmentFile=/srv/uochub/.env
-ExecStart=/srv/uochub/venv/bin/gunicorn uochub.wsgi:application --bind 127.0.0.1:8000 --workers 3
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/uochub/uochub
+EnvironmentFile=/var/www/uochub/.env
+RuntimeDirectory=uochub
+ExecStart=/var/www/uochub/uochub/venv/bin/gunicorn \
+    --workers 3 \
+    --bind unix:/run/uochub/gunicorn.sock \
+    uochub.wsgi:application
 Restart=on-failure
 
 [Install]
