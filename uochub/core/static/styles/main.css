@@ -6,6 +6,12 @@
     --page-bg: #f2f5f8;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     display: flex;
@@ -563,4 +569,51 @@ main form button:hover {
     margin-top: -3.5rem;
     color: #ffffff;
     font-size: 0.95rem;
+}
+
+/* mobile: sidebar becomes a compact top bar instead of a full-height column */
+@media (max-width: 700px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 0.75rem 1rem;
+    }
+
+    .sidebar-user {
+        margin-bottom: 1rem;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .content {
+        background: var(--page-bg);
+    }
+
+    main {
+        padding: 1rem;
+        border-top-left-radius: 0;
+    }
+
+    .topbar {
+        justify-content: center;
+        padding: 0.75rem 1rem;
+    }
+
+    .topbar-text {
+        display: none;
+    }
+
+    .logo {
+        height: 32px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
 }
