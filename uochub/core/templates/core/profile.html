@@ -15,18 +15,25 @@
     <a href="{% url 'profile' %}">Cancel</a>
 </form>
 {% else %}
-<dl class="profile-details">
-    <dt>Username</dt>
-    <dd>{{ user.username }}</dd>
-    <dt>Student ID</dt>
-    <dd>{{ profile.student_id|default:"Not set" }}</dd>
-    <dt>Course</dt>
-    <dd>{{ profile.course|default:"Not set" }}</dd>
-    <dt>Year of study</dt>
-    <dd>{{ profile.get_year_of_study_display|default:"Not set" }}</dd>
-    <dt>About me</dt>
-    <dd>{{ profile.bio|default:"Not set"|linebreaksbr }}</dd>
-</dl>
-<a href="{% url 'profile' %}?edit=1">Edit profile</a>
+<div class="profile-card">
+    <div class="profile-header">
+        <img class="profile-avatar" src="{% static 'icons/user-dummy-pfp.svg' %}" alt="">
+        <div>
+            <h2>{{ user.username }}</h2>
+            <p>{{ profile.course|default:"Student" }}</p>
+        </div>
+    </div>
+    <dl class="profile-details">
+        <dt>Student ID</dt>
+        <dd>{{ profile.student_id|default:"Not set" }}</dd>
+        <dt>Course</dt>
+        <dd>{{ profile.course|default:"Not set" }}</dd>
+        <dt>Year of study</dt>
+        <dd>{{ profile.get_year_of_study_display|default:"Not set" }}</dd>
+        <dt>About me</dt>
+        <dd>{{ profile.bio|default:"Not set"|linebreaksbr }}</dd>
+    </dl>
+    <a class="btn" href="{% url 'profile' %}?edit=1">Edit profile</a>
+</div>
 {% endif %}
 {% endblock %}

@@ -404,6 +404,54 @@ main form button:hover {
     overflow-wrap: break-word;
 }
 
+/* profile card */
+.profile-card {
+    max-width: 480px;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #e5eaef;
+}
+
+.profile-avatar {
+    width: 56px;
+    height: 56px;
+}
+
+.profile-header h2 {
+    margin: 0;
+}
+
+.profile-header p {
+    margin: 0.15rem 0 0;
+    color: var(--text-grey);
+}
+
+.profile-details {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.6rem 1.5rem;
+    margin: 0 0 1.5rem;
+}
+
+.profile-details dt {
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.profile-details dd {
+    margin: 0;
+}
+
 /* login page */
 .login-page {
     flex: 1;
