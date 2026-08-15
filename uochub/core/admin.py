@@ -1,11 +1,16 @@
 from django.contrib import admin
 
-from .models import Booking, Building, CalendarEvent, StudySpace
+from .models import Booking, Building, CalendarEvent, Profile, StudySpace
+
+
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ("user", "student_id", "course", "year_of_study")
 
 
 @admin.register(Building)
 class BuildingAdmin(admin.ModelAdmin):
-    list_display = ("name", "slug")
+    list_display = ("name", "slug", "latitude", "longitude")
     prepopulated_fields = {"slug": ("name",)}
 
 

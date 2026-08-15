@@ -1,26 +1,63 @@
 import datetime
 from calendar import HTMLCalendar
 
+from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
 
-from .forms import BookingForm, SpaceSearchForm, WellbeingContactForm
-from .models import Building, CalendarEvent, StudySpace
+from .forms import BookingForm, ProfileForm, SpaceSearchForm, WellbeingContactForm
+from .models import Building, CalendarEvent, Profile, StudySpace
 
 
 def home(request):
     return render(request, "core/home.html", {"title": "Home"})
 
 
+@login_required
 def profile(request):
-    return render(request, "core/page.html", {"title": "Profile", "icon": "icons/profile.svg"})
+    user_profile, _ = Profile.objects.get_or_create(user=request.user)
+    if request.method == "POST":
+        form = ProfileForm(request.POST, instance=user_profile)
+        if form.is_valid():
+            form.save()
+            return redirect("profile")
+    else:
+        form = ProfileForm(instance=user_profile)
+    return render(
+        request,
+        "core/profile.html",
+        {
+            "title": "Profile",
+            "icon": "icons/profile.svg",
+            "profile": user_profile,
+            "form": form,
+            "editing": request.GET.get("edit") == "1",
+        },
+    )
 
 
 def campus_map(request):
-    return render(request, "core/page.html", {"title": "Campus Map", "icon": "icons/campus-map.svg"})
+    buildings = [
+        {
+            "name": b.name,
+            "description": b.description,
+            "lat": b.latitude,
+            "lng": b.longitude,
+        }
+        for b in Building.objects.exclude(latitude=None).exclude(longitude=None)
+    ]
+    return render(
+        request,
+        "core/campus_map.html",
+        {
+            "title": "Campus Map",
+            "icon": "icons/campus-map.svg",
+            "buildings": buildings,
+        },
+    )
 
 
 def study_spaces(request):

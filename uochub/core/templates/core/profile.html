@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<a class="back-link" href="{% url 'home' %}">Back to Home</a>
+<h1 class="page-title">
+    <img class="page-icon" src="{% static 'icons/profile.svg' %}" alt="">
+    Profile
+</h1>
+{% if editing %}
+<form method="post" class="profile-form" action="{% url 'profile' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+    <a href="{% url 'profile' %}">Cancel</a>
+</form>
+{% else %}
+<dl class="profile-details">
+    <dt>Username</dt>
+    <dd>{{ user.username }}</dd>
+    <dt>Student ID</dt>
+    <dd>{{ profile.student_id|default:"Not set" }}</dd>
+    <dt>Course</dt>
+    <dd>{{ profile.course|default:"Not set" }}</dd>
+    <dt>Year of study</dt>
+    <dd>{{ profile.get_year_of_study_display|default:"Not set" }}</dd>
+    <dt>About me</dt>
+    <dd>{{ profile.bio|default:"Not set"|linebreaksbr }}</dd>
+</dl>
+<a href="{% url 'profile' %}?edit=1">Edit profile</a>
+{% endif %}
+{% endblock %}

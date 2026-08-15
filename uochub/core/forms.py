@@ -1,7 +1,16 @@
 from django import forms
 from django.utils import timezone
 
-from .models import Booking
+from .models import Booking, Profile
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ["student_id", "course", "year_of_study", "bio"]
+        widgets = {
+            "bio": forms.Textarea(attrs={"rows": 4}),
+        }
 
 
 class BookingForm(forms.ModelForm):

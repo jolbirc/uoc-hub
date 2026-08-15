@@ -1,0 +1,41 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block content %}
+<h1 class="page-title">
+    <img class="page-icon" src="{% static 'icons/campus-map.svg' %}" alt="">
+    Campus Map
+</h1>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<div id="campus-map" style="height: 70vh; border-radius: 8px;"></div>
+{{ buildings|json_script:"buildings-data" }}
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script>
+    const buildings = JSON.parse(document.getElementById("buildings-data").textContent);
+
+    // Exton Park (main campus)
+    const map = L.map("campus-map").setView([53.2003, -2.8993], 14);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
+
+    const markers = [];
+    for (const b of buildings) {
+        const marker = L.marker([b.lat, b.lng]).addTo(map);
+        const popup = document.createElement("div");
+        const title = document.createElement("strong");
+        title.textContent = b.name;
+        const desc = document.createElement("p");
+        desc.textContent = b.description;
+        popup.append(title, desc);
+        marker.bindPopup(popup);
+        markers.push(marker);
+    }
+    if (markers.length > 1) {
+        map.fitBounds(L.featureGroup(markers).getBounds().pad(0.1));
+    }
+</script>
+{% endblock %}
