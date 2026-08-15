@@ -8,7 +8,7 @@
     Profile
 </h1>
 {% if editing %}
-<form method="post" class="profile-form" action="{% url 'profile' %}">
+<form method="post" class="profile-form form-card" action="{% url 'profile' %}">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Save</button>

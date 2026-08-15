@@ -34,6 +34,7 @@ class Building(models.Model):
     description = models.TextField(blank=True)
     latitude = models.FloatField(null=True, blank=True)
     longitude = models.FloatField(null=True, blank=True)
+    website = models.URLField(blank=True)
 
     def __str__(self):
         return self.name

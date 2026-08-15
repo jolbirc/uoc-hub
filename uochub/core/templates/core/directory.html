@@ -8,10 +8,16 @@
     Campus Directory
 </h1>
 {% if buildings %}
-<ul>
+<ul class="directory-list">
     {% for building in buildings %}
     <li>
-        <h2>{{ building.name }}</h2>
+        <h2>
+            {% if building.website %}
+            <a class="directory-link" href="{{ building.website }}" target="_blank" rel="noopener">{{ building.name }}</a>
+            {% else %}
+            {{ building.name }}
+            {% endif %}
+        </h2>
         <p>{{ building.description }}</p>
     </li>
     {% endfor %}

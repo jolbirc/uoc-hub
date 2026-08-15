@@ -11,7 +11,7 @@
     {{ space.building.name }} :
     Open {{ space.opening_time|time:"H:i" }}-{{ space.closing_time|time:"H:i" }}
 </p>
-<form method="post">
+<form method="post" class="form-card">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Book</button>

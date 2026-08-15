@@ -11,7 +11,7 @@
 <p>Thanks, your message has been sent to the university wellbeing team.</p>
 <a href="{% url 'wellbeing' %}">Send another message</a>
 {% else %}
-<form method="post" class="wellbeing-form">
+<form method="post" class="wellbeing-form form-card">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Send</button>

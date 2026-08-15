@@ -159,6 +159,251 @@ h1, h2 {
     color: var(--navy);
 }
 
+/* shared form styling */
+main label {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 0.95rem;
+}
+
+main input,
+main select,
+main textarea {
+    padding: 0.5rem 0.7rem;
+    border: 1px solid #ccd5de;
+    border-radius: 8px;
+    font: inherit;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+main form button {
+    padding: 0.55rem 1.4rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--navy);
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+}
+
+main form button:hover {
+    background: var(--navy-light);
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.55rem 1.4rem;
+    border-radius: 8px;
+    background: var(--navy);
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: var(--navy-light);
+}
+
+/* white panel for stacked forms (wellbeing, booking) */
+.form-card {
+    max-width: 480px;
+    padding: 1.25rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.form-card p {
+    margin: 0 0 1rem;
+}
+
+.form-card label {
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+    width: 100%;
+}
+
+/* study space search bar */
+.space-search-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1rem;
+    max-width: 900px;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.space-search-form p {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin: 0;
+}
+
+.space-search-form a {
+    align-self: center;
+    color: var(--navy);
+}
+
+/* card lists: study spaces + directory */
+.space-list,
+.directory-list {
+    display: grid;
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.space-list li,
+.directory-list li {
+    padding: 1.25rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #fff;
+}
+
+.space-list h2,
+.directory-list h2 {
+    margin: 0 0 0.25rem;
+}
+
+.directory-link {
+    color: var(--navy);
+    text-decoration: none;
+}
+
+.directory-link:hover {
+    text-decoration: underline;
+}
+
+.space-list p,
+.directory-list p {
+    margin: 0.35rem 0;
+    color: var(--text-grey);
+}
+
+.space-list .space-building {
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.space-list .btn {
+    margin-top: 0.75rem;
+}
+
+/* availability badges */
+.badge {
+    display: inline-block;
+    margin-left: 0.5rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.badge-free {
+    background: #e2f3e6;
+    color: #1a7f37;
+}
+
+.badge-in-use {
+    background: #fdeee0;
+    color: #b25e09;
+}
+
+.badge-closed {
+    background: #eceff2;
+    color: #5c6670;
+}
+
+/* academic calendar */
+.calendar-nav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.calendar-nav a {
+    padding: 0.4rem 1rem;
+    border: 1px solid #ccd5de;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.calendar-nav a:hover {
+    background: var(--navy);
+    color: #fff;
+}
+
+.calendar-wrap {
+    max-width: 900px;
+    overflow-x: auto;
+}
+
+.calendar-wrap table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.calendar-wrap th {
+    padding: 0.6rem;
+    background: var(--navy);
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+}
+
+.calendar-wrap td {
+    height: 72px;
+    padding: 0.4rem 0.5rem;
+    border-top: 1px solid #e5eaef;
+    vertical-align: top;
+    text-align: left;
+}
+
+.calendar-wrap td + td {
+    border-left: 1px solid #e5eaef;
+}
+
+.calendar-wrap td.noday {
+    background: #f7f9fb;
+}
+
+.calendar-wrap td ul {
+    margin: 0.3rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.calendar-wrap td li {
+    margin-top: 0.2rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 6px;
+    background: var(--navy);
+    color: #fff;
+    font-size: 0.78rem;
+    overflow-wrap: break-word;
+}
+
 /* login page */
 .login-page {
     flex: 1;
