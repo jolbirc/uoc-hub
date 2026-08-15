@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+uochub/db.sqlite3
+uochub/staticfiles/
+.env

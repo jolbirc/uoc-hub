@@ -121,11 +121,23 @@ h1, h2 {
 }
 
 /* icon sizing */
-.avatar {
-    width: 64px;
-    height: 64px;
-    display: block;
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     margin-bottom: 2rem;
+}
+
+.sidebar-username {
+    color: #fff;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.avatar {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
 }
 
 .nav-icon {
