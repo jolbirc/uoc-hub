@@ -6,7 +6,7 @@
 - [x] Hifi design (figma)
 - [x] Code
 - [x] Set up DevOps/ReadMe
-- [ ] Screenshots of completed project
-- [ ] Recorded video of MVP
-- [ ] User guide? / Documentation on what could've went better
-- [ ] OneDrive submission
+- [x] Screenshots of completed project
+- [x] Recorded video of MVP
+- [x] User guide? / Documentation on what could've went better
+- [x] OneDrive submission

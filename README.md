@@ -20,7 +20,7 @@ Built as a coursework MVP (CO5992) exploring building a single hub for reducing 
   - **Deploy**: Nginx + Gunicorn
 
 ---
-## Features & Usage
+## User Guide
 
 ### Home
 Landing dashboard after login, with tiles linking to each feature area.
@@ -46,3 +46,12 @@ Leaflet/OS Street Map map implemented to view the campus and all the relevant lo
 
 ### Profile
 View/manage account details - requires login.
+
+### Authentication
+Most pages require login. A test account has been set up for demo purposes:
+  - Username: test_user
+  - Password: testpass123
+
+---
+
+Josh Birch
